@@ -44,7 +44,7 @@ class Google_Service_Calendar extends Google_Service
   public $events;
   public $freebusy;
   public $settings;
-  
+
 
   /**
    * Constructs the internal representation of the Calendar service.
@@ -2640,6 +2640,34 @@ class Google_Service_Calendar_Event extends Google_Collection
   public function getVisibility()
   {
     return $this->visibility;
+  }
+
+  /**
+   * Get event start date and time
+   *
+   * @return string DateTime or Date
+   */
+  public function getStartDateTime() {
+  	if(!empty($this->start->dateTime)) {
+  		return $this->start->dateTime;
+  	} elseif(!empty($this->start->date)) {
+  		return $this->start->date;
+  	}
+  	return '';
+  }
+
+  /**
+   * Get event end date and time
+   *
+   * @return string DateTime or Date
+   */
+  public function getEndDateTime() {
+  	if(!empty($this->end->dateTime)) {
+  		return $this->end->dateTime;
+  	} elseif(!empty($this->end->date)) {
+  		return $this->end->date;
+  	}
+  	return '';
   }
 }
 
